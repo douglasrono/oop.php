@@ -1,4 +1,4 @@
-<?php
+ <?php
 class Fruit {
   public $name;
   public $color;
@@ -6,18 +6,19 @@ class Fruit {
     $this->name = $name;
     $this->color = $color;
   }
-  public function intro() {
+  protected function intro() {
     echo "The fruit is {$this->name} and the color is {$this->color}.";
   }
 }
 
-// Strawberry is inherited from Fruit
 class Strawberry extends Fruit {
   public function message() {
     echo "Am I a fruit or a berry? ";
   }
 }
-$strawberry = new Strawberry("Strawberry", "red");
-$strawberry->message();
-$strawberry->intro();
-?>
+
+// Try to call all three methods from outside class
+$strawberry = new Strawberry("Strawberry", "red");  // OK. __construct() is public
+$strawberry->message(); // OK. message() is public
+$strawberry->intro(); // ERROR. intro() is protected
+?> 
